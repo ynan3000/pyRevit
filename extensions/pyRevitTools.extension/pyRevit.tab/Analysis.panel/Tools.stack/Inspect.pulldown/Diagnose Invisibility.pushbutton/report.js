@@ -283,7 +283,8 @@
         box.checked = this.selected.has(Number(box.dataset.pick));
       }
       if (this.selectAllInput) {
-        this.selectAllInput.checked = this.selected.size > 0 && this.selected.size === this.elementCount;
+        const selectable = this.views.length ? this.views[0].elements.length : 0;
+        this.selectAllInput.checked = this.selected.size > 0 && this.selected.size === selectable;
       }
       const revealOnly = this.data.autoReveal !== null && this.views.length > 0;
       this.emptyStateNode.hidden = revealOnly || (this.views.length > 0 && this.elementCount > 0);
